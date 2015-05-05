@@ -3,7 +3,6 @@
 def train(num_neuron=8, num_loop=1000000):
 	# my code here
 	import os
-	import codecs
 	import time
 	import numpy as np
 	from RS import Matrix_Factorization as MF
@@ -47,18 +46,11 @@ def train(num_neuron=8, num_loop=1000000):
 				pred_rate.append({'CID':i+1, 'GID': j+1, 'RATE': R[i, j], 'REAL':0})
 	db_rs.update_all_pred_rate(pred_rate)
 
-
 	# print Ein
 	print "Time taken: ", ExeTime, " seconds."
 	print 'Ein: ', Ein
 	print ''
 	print 'Train data successfully'
-	# 
-
-	# return result
-	# print V
-	# print W
-	# print Rec.predict_rate(1, 2)
 
 def save_raw_data(raw_data):
 	import math
@@ -237,11 +229,11 @@ def rec_for_a_cus(cus_id, num_rec=3):
 
 
 def is_int(s):
-    try:
-        int(s)
-        return True
-    except ValueError:
-        return False
+	try:
+		int(s)
+		return True
+	except ValueError:
+		return False
 
 class Movie(object):
 	def __init__(self, id, name, rate):
@@ -257,10 +249,9 @@ class Movie(object):
 		# IMPORTANT: encode to Big5 in order to display on cmp
 		return '(id: '+str(self.id)+', name: '+self.name.decode('utf-8').encode('Big5')+', rate: '+str(round(self.rate,2))+')'
 
-import sys
-import codecs
-
 if __name__ == '__main__':
+	import sys
+	import codecs
 	if len(sys.argv) > 1:
 		# file_location = sys.argv[1].strip()
 		if sys.argv[1] == 'save_raw_data':
