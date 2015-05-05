@@ -84,8 +84,8 @@ def add_a_customer(rows_, cus_id=None, conn_=None):
 	else:
 		old_rows = []
 	dd = rows_diff_by_seq(seq(old_rows), seq(rows_), old_rows, rows_,
-						  incl=['NAME'],
-						  ind=['NAME'], rplc=False,  fillback=False)
+						  incl=['ID','NAME'],
+						  ind=['ID'], rplc=False,  fillback=False)
 	rows = db_utils.db_operate_dict(_conn, customer, dd, pk=['ID'])
 
 	# get goods dict

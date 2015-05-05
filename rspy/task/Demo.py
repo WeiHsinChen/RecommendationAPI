@@ -1,6 +1,6 @@
 
 
-def train(num_neuron=8, num_loop=10):
+def train(num_neuron=8, num_loop=1000000):
 	# my code here
 	import os
 	import codecs
@@ -50,8 +50,7 @@ def train(num_neuron=8, num_loop=10):
 
 	# print Ein
 	print "Time taken: ", ExeTime, " seconds."
-	print 'Ein'
-	print Ein
+	print 'Ein: ', Ein
 	print ''
 	print 'Train data successfully'
 	# 
@@ -111,10 +110,12 @@ def add_a_customer(raw_data, cus_id=None):
 	temp = raw_data[1].split('	')
 	cus_list = []
 	cus_raw = {}
+	update = False
 	if cus_id == None:
 		cus_list.append({'NAME':temp[1]})	
 	else:
 		cus_list.append({'ID': int(cus_id), 'NAME':temp[1]})
+		update = True
 	cus_raw[temp[1]] = {}
 	rates = ""
 	real = ""
@@ -181,7 +182,11 @@ def add_a_customer(raw_data, cus_id=None):
 			pred_rate.append({'CID':cus_id, 'GID': j+1, 'RATE': Rec.predict_rate(cus_id, j), 'REAL':0})
 	db_rs.update_a_pred_rate(pred_rate, CID = cus_id)
 
-	print 'Add a new customer successfully'
+	print ''
+	if update:
+		print 'Update a new customer successfully'
+	else:
+		print 'Add a new customer successfully'
 
 def add_a_good(good_name):
 	import math

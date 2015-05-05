@@ -38,13 +38,13 @@ class Matrix_Factorization:
 				rate = int(self.rates[viewer_no, movie_no])
 				residual = rate - (wm_old.T * vn_old)[0,0]
 
-				# SGD-update
 				# avoid reach breaking point
 				if math.isnan(residual) or abs(wm_old.T * vn_old) > 15:
 					print 'viewer_no: '+str(viewer_no)
 					print 'movie_no: '+str(movie_no)
 					break
 
+				# SGD-update
 				V[:, viewer_no] = vn_old + step_size * residual * wm_old
 				W[:, movie_no] = wm_old + step_size * residual * vn_old
 
@@ -73,7 +73,12 @@ class Matrix_Factorization:
 		num_movie = int(np.shape(self.rates)[1])
 
 		# start to training
-		for i in xrange(num_movie):
+		# only update one move when adding or updating a customer
+		updated = False
+		temp = 0
+		while not updated and temp < 2*num_movie:
+			i = randint(0, num_movie-1)
+			temp += 1
 			if int(self.real[0, i]) == 1:
 				# variables
 				viewer_no = cus_id - 1
@@ -88,14 +93,11 @@ class Matrix_Factorization:
 				residual = rate - (wm_old.T * vn_old)[0,0]
 
 				# SGD-update
-				# avoid reach breaking point
-				if math.isnan(residual) or abs(wm_old.T * vn_old) > 15:
-					print 'viewer_no: '+str(viewer_no)
-					print 'movie_no: '+str(movie_no)
-					break
-
 				self.V[:, viewer_no] = vn_old + step_size * residual * wm_old
 				self.W[:, movie_no] = wm_old + step_size * residual * vn_old
+				updated = True
+
+
 
 		return {"V": self.V, "W": self.W}
 
@@ -144,19 +146,19 @@ class Matrix_Factorization:
 			return -1
 
 	def is_number(self, s):
-	    try:
-	        float(s)
-	        return True
-	    except ValueError:
-	        pass
+		try:
+			float(s)
+			return True
+		except ValueError:
+			pass
 	 
-	    try:
-	        import unicodedata
-	        unicodedata.numeric(s)
-	        return True
-	    except (TypeError, ValueError):
-	        pass
-	 	return False
+		try:
+			import unicodedata
+			unicodedata.numeric(s)
+			return True
+		except (TypeError, ValueError):
+			pass
+		return False
 
 
 

@@ -8,7 +8,8 @@ def get_engine():
 def my_con_func():
 	# print "My Connection func"
 	import sqlite3.dbapi2 as sqlite
-	con = sqlite.connect('c:/Users/usr/Documents/HY Project/tech_comp/rspy/data/rs.sqlite')
+	import os
+	con = sqlite.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','data/rs.sqlite'))
 	con.text_factory=str
 	return con
 
