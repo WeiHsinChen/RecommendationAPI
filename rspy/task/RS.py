@@ -53,14 +53,16 @@ class Matrix_Factorization:
 
 			error_table = np.matrix(np.zeros(shape = (num_viewer, num_movie)))
 			error = 0
+			temp = 0
 			for i in xrange(num_viewer):
 				for j in xrange(num_movie):
 					if int(self.rates[i, j]) != 0:
 						e = math.pow(float(self.rates[i, j]) - W[:, j].T * V[:, i], 2)
 						error += e
 						error_table[i, j] = e
+						temp += math.pow(float(self.rates[i, j]), 2) 
 
-			return {"V": V, "W": W, "Ein": error, "EinTable": error_table}
+			return {"V": V, "W": W, "Ein": error/temp, "EinTable": error_table}
 
 		return False
 
@@ -96,8 +98,6 @@ class Matrix_Factorization:
 				self.V[:, viewer_no] = vn_old + step_size * residual * wm_old
 				self.W[:, movie_no] = wm_old + step_size * residual * vn_old
 				updated = True
-
-
 
 		return {"V": self.V, "W": self.W}
 
