@@ -88,12 +88,18 @@ def add_a_customer(rows_, cus_id=None, conn_=None):
 						  ind=['ID'], rplc=False,  fillback=False)
 	rows = db_utils.db_operate_dict(_conn, customer, dd, pk=['ID'])
 
-	# get goods dict
-	cus_dict = get_customers_dict(conn_=_conn)
+	# get cus id
+	stmt = sql.select([sqlite_sequence.c.seq]).\
+			select_from(sqlite_sequence).\
+			where(sqlite_sequence.c.name == 'CUSTOMER')
+
+	row_data = None
+	for row in _conn.execute(stmt):
+		row_data = db_utils.row2dict(row, has_none=True)
 
 	if conn_ is None:
 		_conn.close()
-	return cus_dict
+	return row_data['seq'] if cus_id == None else cus_id
 
 def read_customer(cus_id=None, conn_=None):
 	_conn = db_utils.getconnection(conn_, db='rs')
@@ -153,8 +159,19 @@ def add_a_good(rows_, conn_=None):
 						  ind=['NAME'], rplc=False,  fillback=False)
 	rows = db_utils.db_operate_dict(_conn, goods, dd, pk=['ID'])
 
-	# get goods dict
-	goods_dict = get_goods_dict(conn_=_conn)
+	# get good id
+	stmt = sql.select([sqlite_sequence.c.seq]).\
+			select_from(sqlite_sequence).\
+			where(sqlite_sequence.c.name == 'GOODS')
+
+	row_data = None
+	for row in _conn.execute(stmt):
+		row_data = db_utils.row2dict(row, has_none=True)
+
+	if conn_ is None:
+		_conn.close()
+	return row_data['seq']
+
 
 	if conn_ is None:
 		_conn.close()
@@ -185,6 +202,21 @@ def get_goods_dict(reverse=None, conn_=None):
 			goods_dict[g['ID']] = g['NAME']
 
 	return goods_dict
+
+def max_good_id(conn_=None):
+	_conn = db_utils.getconnection(conn_, db='rs')
+
+	stmt = sql.select([goods.c.ID]).\
+			select_from(goods)
+
+	rets = []
+	for row in _conn.execute(stmt):
+		rets.append(row[0])
+
+	if conn_ is None:
+		_conn.close()
+
+	return rets
 
 # rates
 def add_rates(rows_, conn_=None):
@@ -310,4 +342,20 @@ def get_rate_matrix():
 	real_matrix = np.matrix(real_record[1: len(real_record)])
 
 	return {'rates':rate_matrix, 'real':real_matrix}
+
+def rated_goods(CID_, conn_=None):
+	_conn = db_utils.getconnection(conn_, db='rs')
+
+	stmt = sql.select([rate]).\
+			select_from(rate).\
+			where(and_(rate.c.CID == CID_,rate.c.REAL == 1))
+
+	rets = {}
+	for row in _conn.execute(stmt):
+		rets[row['GID']] = row['RATE']
+
+	if conn_ is None:
+		_conn.close()
+
+	return rets
 

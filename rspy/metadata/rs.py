@@ -19,3 +19,8 @@ rate = Table('RATE', metadata,
         Column('RATE', Integer),
         Column('REAL', Integer)
     )
+
+sqlite_sequence = Table('sqlite_sequence', metadata,
+        Column('name', Integer),
+        Column('seq', Integer)
+    )
