@@ -1,3 +1,6 @@
+import sys
+sys.path.append("../..")
+
 from sqlite3 import dbapi2 as sqlite
 
 from sqlalchemy import create_engine

@@ -1,3 +1,5 @@
+import sys
+sys.path.append("../..")
 
 class Matrix_Factorization:
 	def __init__(self, rates = None, real = None, V = None, W = None):

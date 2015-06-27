@@ -1,3 +1,6 @@
+import sys
+sys.path.append("../..")
+
 from sqlalchemy import sql
 from sqlalchemy.sql import and_
 from sqlalchemy.sql.expression import bindparam

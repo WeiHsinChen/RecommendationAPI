@@ -1,4 +1,5 @@
-
+import sys
+sys.path.append("../..")
 
 def train(num_neuron=8, num_loop=1000000):
 	# my code here
