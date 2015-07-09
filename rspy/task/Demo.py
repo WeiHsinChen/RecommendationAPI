@@ -7,7 +7,7 @@ def train(num_neuron=8, num_loop=1000000):
 	import time
 	import numpy as np
 	from RS import Matrix_Factorization as MF
-	from rspy.db import rs as db_rs
+	from rspy.db import db_rs
 
 	# variables
 	step_size = 0.005
@@ -55,7 +55,12 @@ def train(num_neuron=8, num_loop=1000000):
 
 def save_raw_data(raw_data):
 	import math
-	from rspy.db import rs as db_rs
+	from rspy.db import db_rs
+
+	if not db_rs.check_add_raw_data():
+		print ""
+		print "There are already a bunch of data in the database; thus, it is proper to use 'add' or 'update' method to update data."
+		return
 
 	# update goods
 	goods_list = []
@@ -95,7 +100,7 @@ def add_a_customer(raw_data, name, cus_id=None):
 	import math
 	import numpy as np
 	from RS import Matrix_Factorization as MF
-	from rspy.db import rs as db_rs
+	from rspy.db import db_rs
 
 	# raw_data = [{'GID': 12, 'RATE': 5}, {'GID': 2, 'RATE': 3}, {'GID': 9, 'RATE': 9}]
 	# add a new customer
@@ -185,7 +190,7 @@ def add_a_customer(raw_data, name, cus_id=None):
 def add_goods(goods):
 	import math
 	import numpy as np
-	from rspy.db import rs as db_rs
+	from rspy.db import db_rs
 
 	id_list = []
 	for i in xrange(len(goods)):
@@ -216,7 +221,7 @@ def add_goods(goods):
 
 def rec_for_a_cus(cus_id, num_rec=3):
 	from Queue import PriorityQueue
-	from rspy.db import rs as db_rs
+	from rspy.db import db_rs
 
 	q = PriorityQueue()
 	rates = db_rs.read_rate(CID = cus_id)
@@ -236,7 +241,7 @@ def rec_for_a_cus(cus_id, num_rec=3):
 		print 'There is no such customer!'
 
 def test():
-	from rspy.db import rs as db_rs
+	from rspy.db import db_rs
 	print db_rs.max_good_id()
 
 def is_int(s):
