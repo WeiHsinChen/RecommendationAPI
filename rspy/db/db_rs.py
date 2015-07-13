@@ -362,3 +362,25 @@ def rated_goods(CID_, conn_=None):
 
 	return rets
 
+def check_add_raw_data(conn_=None):
+	_conn = db_utils.getconnection(conn_, db='rs')
+
+	stmt = sql.select([sqlite_sequence.c.seq]).\
+			select_from(sqlite_sequence).\
+			where(sqlite_sequence.c.name == 'CUSTOMER')
+
+	try:
+		for row in _conn.execute(stmt):
+			res = row['seq']
+
+		if conn_ is None:
+			_conn.close()
+
+		if int(res) > 0:
+			return False
+		else:
+			return True
+	except:
+		if conn_ is None:
+			_conn.close()
+		return True
