@@ -58,8 +58,9 @@ def save_raw_data(raw_data):
 	from rspy.db import db_rs
 
 	if not db_rs.check_add_raw_data():
-		print ""
+		print 
 		print "There are already a bunch of data in the database; thus, it is proper to use 'add' or 'update' method to update data."
+		print 
 		return
 
 	# update goods
