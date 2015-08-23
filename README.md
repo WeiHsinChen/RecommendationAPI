@@ -74,8 +74,8 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	
 		```
 		cd /Users/frank/Documents/RecommendationAPI/rspy/task
-			python Demo.py rec_for_a_cus 43 3
-			```
+		python Demo.py rec_for_a_cus 43 3
+		```
 			
 4. adding new products
 
@@ -98,8 +98,8 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 		
 		```
 		cd /Users/frank/Documents/RecommendationAPI/rspy/task
-			python Demo.py add_goods ../data/new_goods.txt
-			```
+		python Demo.py add_goods ../data/new_goods.txt
+		```
 		
 5. Adding a new customer
 	*	The input format is "txt" which content is "JSON" format.
@@ -109,25 +109,25 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Example of input file
 
 		```
-			[{"GID": 1, "RATE":5},
-			{"GID": 3, "RATE":6},
-			{"GID": 14, "RATE":1},
-			{"GID": 16, "RATE":3},
-			{"GID": 21, "RATE":9}]
+		[{"GID": 1, "RATE":5},
+		{"GID": 3, "RATE":6},
+		{"GID": 14, "RATE":1},
+		{"GID": 16, "RATE":3},
+		{"GID": 21, "RATE":9}]
 		```
 		
 	* Commands in terminal
 	
-	```
-	cd "the position of task in this program"
-python Demo.py add_a_cus ../data/new_cus.txt
+		```
+		cd "the position of task in this program"
+		python Demo.py add_a_cus ../data/new_cus.txt
 		```
 		
 	* Example commands
 	
-	```
-	cd /Users/frank/Documents/RecommendationAPI/rspy/task
-python Demo.py add_a_cus ../data/new_cus.txt
+		```
+		cd /Users/frank/Documents/RecommendationAPI/rspy/task
+	python Demo.py add_a_cus ../data/new_cus.txt
 		```
 		
 6. Updating the name/rating-records of a customer
@@ -138,24 +138,24 @@ python Demo.py add_a_cus ../data/new_cus.txt
 	* Example of input file
 
 		```
-			{“ID”: 43,
-			"NAME":"new name", 
-			"DATA":	[{"GID": 25, "RATE":1},
-					{"GID": 26, "RATE":1},
-					{"GID": 27, "RATE":1}]}
+		{“ID”: 43,
+		"NAME":"new name", 
+		"DATA":	[{"GID": 25, "RATE":1},
+				{"GID": 26, "RATE":1},
+				{"GID": 27, "RATE":1}]}
 		```
 
 	* Commands in terminal
 	
-			```
-			cd "the position of task in this program"
-			python Demo.py update_a_cus ../data/update_cus.txt
-			```
+		```
+		cd "the position of task in this program"
+		python Demo.py update_a_cus ../data/update_cus.txt
+		```
 		
 	* Example commands
 	
 		```
 		cd /Users/frank/Documents/RecommendationAPI/task
-			python Demo.py update_a_cus ../data/update_cus.txt
+		python Demo.py update_a_cus ../data/update_cus.txt
 		```
 
