@@ -241,10 +241,6 @@ def rec_for_a_cus(cus_id, num_rec=3):
 		print ''
 		print 'There is no such customer!'
 
-def test():
-	from rspy.db import db_rs
-	print db_rs.max_good_id()
-
 def is_int(s):
 	try:
 		int(s)
@@ -264,7 +260,8 @@ class Movie(object):
 			return 1
 	def __str__(self):
 		# IMPORTANT: encode to Big5 in order to display on cmp
-		return '(GID: '+str(self.id)+', NAME: '+self.name.decode('utf-8').encode('Big5')+', RATE: '+str(round(self.rate,2))+')'
+		# return '(GID: '+str(self.id)+', NAME: '+self.name.decode('utf-8').encode('Big5')+', RATE: '+str(round(self.rate,2))+')'
+		return '(GID: '+str(self.id)+', NAME: '+self.name+', RATE: '+str(round(self.rate,2))+')'
 
 if __name__ == '__main__':
 	import sys
@@ -274,9 +271,6 @@ if __name__ == '__main__':
 		# file_location = sys.argv[1].strip()
 		if sys.argv[1] == 'save_raw_data':
 			file_location = sys.argv[2].strip()
-			# input_data_file = open(file_location, 'r')
-			# raw_data = input_data_file.readlines()
-			# input_data_file.close()
 			with codecs.open(file_location, mode='r') as f:
 				raw_data = f.readlines()
 			save_raw_data(raw_data)
@@ -306,12 +300,6 @@ if __name__ == '__main__':
 				rec_for_a_cus(int(sys.argv[2]))
 			else:
 				print 'Please type the correct format'
-		elif sys.argv[1] == 'test':
-			file_location = sys.argv[2].strip()
-			with codecs.open(file_location, mode='r') as f:
-				raw_data = f.readlines()
-			raw_data = json.loads(raw_data[0].decode('Big5').encode('utf-8'))
-			add_a_customer(raw_data['DATA'], raw_data['NAME'], cus_id=raw_data['ID'] if 'ID' in raw_data else None)
 	else:
 		print 'Please type the correct format'
 
