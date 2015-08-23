@@ -76,6 +76,9 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 		cd /Users/frank/Documents/RecommendationAPI/rspy/task
 		python Demo.py rec_for_a_cus 43 3
 		```
+		
+	* Example output
+		![plot of output](figure/output.png) 
 			
 4. adding new products
 
@@ -131,7 +134,7 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 		```
 		
 6. Updating the name/rating-records of a customer
-	*	The input format is "txt" file which content is "JSON" format.
+	*	The input format is "txt" which content is "JSON" format.
 
 	* When updating a customer, the program will partially recalculate implicit information by stochastic gradient descent to improve the precision of prediction.
 	
