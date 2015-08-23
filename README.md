@@ -1,8 +1,8 @@
 ## Introduction
-RecommendationAPI is a program for recommendation systems and applications, e.g., recommending products to customers which they have not yet rated. This program is based on "matrix factorization", "linear regression" and "stochastic gradient descent". In order to facilitate demo, the APIs need to be manipulated by terminal. However, it is easy to transform it to WebAPIs by slightly modifing the code in Demo.py.
+RecommendationAPI is a program for recommendation systems and applications, e.g., recommending products which customers have not yet rated. This program is based on "matrix factorization", "linear regression" and "stochastic gradient descent". In order to facilitate demo, the APIs need to be manipulated by terminal. However, it is easy to transform it to WebAPIs by slightly modifing the code in Demo.py.
 
 ## Requirement setup
-* Python 2.7
+* Python 2.7 or Python 3.4
 * Numpy
 * sqlalchemy
 
@@ -12,12 +12,12 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 ## Instructions of APIs
 1. Storing raw data
 
-	* First, it is necessary to store bulk rating records from customers. The format of input record is "txt" and each column is seperated by a "tab". if one customer does not rate one product, you do not type anything in that cell.
+	* First, it is necessary to store bulk rating records from customers. The format of input record is "txt" and each column is seperated by a "tab". If one customer does not rate one specific product, you do not type anything in that cell.
 	
 	* Example of input file
 	
 		```
-		Timestamp	Name	The Averager	BirdMan	
+		Timestamp	Name	The Averagers	BirdMan	
 	2015/05/05	Frank		5
 	2015/05/05	Andy	5	5
 	2015/05/07	Allen	5	5
@@ -102,7 +102,7 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 			```
 		
 5. Adding a new customer
-	*	The input format is "txt" file which content is "JSON" format.
+	*	The input format is "txt" which content is "JSON" format.
 
 	* When adding a new customer, the program will partially recalculate implicit information by stochastic gradient descent to improve the precision of prediction.
 	
@@ -117,12 +117,14 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 		```
 		
 	* Commands in terminal
+	
 	```
 	cd "the position of task in this program"
 python Demo.py add_a_cus ../data/new_cus.txt
 		```
 		
 	* Example commands
+	
 	```
 	cd /Users/frank/Documents/RecommendationAPI/rspy/task
 python Demo.py add_a_cus ../data/new_cus.txt
@@ -144,15 +146,16 @@ python Demo.py add_a_cus ../data/new_cus.txt
 		```
 
 	* Commands in terminal
+	
 			```
 			cd "the position of task in this program"
 			python Demo.py update_a_cus ../data/update_cus.txt
 			```
 		
 	* Example commands
+	
 		```
 		cd /Users/frank/Documents/RecommendationAPI/task
 			python Demo.py update_a_cus ../data/update_cus.txt
 		```
-
 
