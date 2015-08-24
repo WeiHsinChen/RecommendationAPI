@@ -1,12 +1,12 @@
 ## Introduction
 RecommendationAPI is a program for recommendation systems and applications, e.g., recommending products which customers have not yet rated. This program is based on "matrix factorization", "linear regression" and "stochastic gradient descent". In order to facilitate demo, the APIs need to be manipulated by terminal. However, it is easy to transform it to WebAPIs by slightly modifing the code in Demo.py.
 
-## Requirement setup
+## Required setup
 * Python 2.7 or Python 3.4
 * Numpy
 * sqlalchemy
 
-## Recommend software but not necessary
+## Recommend but not necessary
  * sqliteBrowser
  
 ## Instructions of APIs
