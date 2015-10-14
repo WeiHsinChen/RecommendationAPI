@@ -33,7 +33,7 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Example commands
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py save_raw_data ../data/raw.txt
 		```
 		
@@ -46,14 +46,14 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Commands in terminal
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py train "number of neuron" "number of iteration step"
 		```
 		
 	* Example commands
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py train 8 50000
 		```
 		
@@ -73,7 +73,7 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Example commands
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py rec_for_a_cus 43 3
 		```
 		
@@ -93,14 +93,14 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Commands in Terminal
 		
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py add_goods ../data/new_goods.txt
 		```
 		
 	* Example commands
 		
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py add_goods ../data/new_goods.txt
 		```
 		
@@ -122,14 +122,14 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Commands in terminal
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py add_a_cus ../data/new_cus.txt
 		```
 		
 	* Example commands
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 	python Demo.py add_a_cus ../data/new_cus.txt
 		```
 		
@@ -151,14 +151,14 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Commands in terminal
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py update_a_cus ../data/update_cus.txt
 		```
 		
 	* Example commands
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py update_a_cus ../data/update_cus.txt
 		```
 
