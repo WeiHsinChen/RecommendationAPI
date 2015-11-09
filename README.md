@@ -66,7 +66,7 @@ RecommendationAPI is a program for recommendation systems and applications, e.g.
 	* Commands in Terminal
 	
 		```
-		cd "the position of task director"
+		cd "the position of task directory"
 		python Demo.py rec_for_a_cus "ID of a customer" "number of recommended products for this customer"
 		```
 	
